@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Бронирование мест</title>
+        <style>
+            label {display: inline-block; width: 150px; font-weight: bold;}
+        </style>
+    </head>
+    <body>
+        <h1>Выберите количество мест</h1>
+        <div style="border: 1px solid green; border-radius: 10px; max-width: 70%; padding: 10px 10px; text-align: center; margin: 0 auto 20px;">
+            <form method="POST" action="">
+                {% csrf_token %}
+
+
+
+                <label style="margin-top:50px; font-weight: bold;" for="id_num_seats">Количество мест:</label>
+                <input style="margin-bottom: 50px;" type="number" id="id_num_seats" name="num_seats" min="1" required> </br>
+                <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;
+                border-radius: 5px; text-decoration: none; text-transform: uppercase;" type="submit">Забронировать</button>
+
+            </form>
+        </div>
+        {% if error_message %}
+            <p style="border: 1px solid red; padding: 10px 75px; text-align: center; border-radius: 5px; color: red; font-weight: bold; max-width: 50%; margin: 0 auto 20px;" class="error">{{ error_message }}</p>
+        {% endif %}
+    </body>
+
+{% endblock %}

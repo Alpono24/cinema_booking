@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        h1 {text-align: center; text-transform: uppercase;}
+    </style>
+</head>
+
+<body>
+    <div style="border: 1px solid green; border-radius: 10px; max-width: 70%; padding: 10px 10px 20px; text-align: center; margin: 0 auto 20px;">
+        <h1 class="title_page" style="margin-bottom: 80px;">Войдите в свою учётную запись или зарегистрируйтесь</h1>
+
+        <form method="post" action="{% url 'registration:login' %}">
+            {% csrf_token %}
+            <p>
+                <input type="text" name="username" placeholder="Имя пользователя"  style="
+                                                                                    padding: 10px;
+                                                                                    border-color: red;
+                                                                                    border: 1px solid;
+                                                                                    border-radius: 5px;
+                                                                                    font-size: 16px;
+                                                                                    margin-top: 5px;
+                                                                                    background-color: white;
+                                                                                    color: grey;
+                                                                                    margin-right: 10px;
+                                                                                    width: 50%;
+                                                                                    text-align: center;
+                                                                                    ">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Пароль" style="
+                                                                                    padding: 10px;
+                                                                                    border-color: red;
+                                                                                    border: 1px solid;
+                                                                                    border-radius: 5px;
+                                                                                    font-size: 16px;
+                                                                                    margin-top: 5px;
+                                                                                    background-color: white;
+                                                                                    color: grey;
+                                                                                    margin-right: 10px;
+                                                                                    width: 50%;
+                                                                                    text-align: center;
+                                                                                    ">
+            </p>
+            <div style="margin-top: 90px;">
+                <div><button style="margin-bottom: 50px; text-align: center;" type="submit">Войти</button></div>
+                <div>Нет аккаунта?  <a href="{% url 'registration:register' %}">Зарегистрироваться</a></div>
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

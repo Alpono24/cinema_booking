@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+ <div style="border: 1px solid green; border-radius: 10px; max-width: 70%; padding: 10px 10px 20px; text-align: center; margin: 0 auto 20px;">
+    <h1>Поздравляем!</h1>
+    <div>Вы успешно зарегистриовались на сайте под логином: <b>{{request.user}}</b></div>
+    <div style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;
+                          border-radius: 5px; text-decoration: none; text-transform: uppercase; margin-top: 200px;"><a href="{% url 'booking:session_list' %}">На главную</a></div>
+</div>
+{% endblock %}

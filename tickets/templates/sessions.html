@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Список сеансов</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        h1, h2, h3 {text-align: center; text-transform: uppercase;}
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; text-transform: uppercase;">Доступные сеансы</h1>
+    {% for session in sessions %}
+        <div style="border: 1px solid green; border-radius: 10px; max-width: 70%; padding: 10px 10px 20px; text-align: center; margin: 0 auto 20px;">
+            <h3 style="color: blue;"><strong>Название кинотеатра:</strong> {{ session.cinema.name }}</h3>
+            <h3 style="color: green;"><strong>Название фильма:</strong> {{ session.title }}</h3>
+            <p style="color: orange;"><strong>Время сеанса:</strong> {{ session.date_time|date:"d.m.Y H:i" }}</p>
+
+            <p><strong>Всего мест:</strong> {{ session.total_seats }}</p>
+            <p><strong>Забронировано:</strong> {{ session.booked_seats }}</p>
+
+            {% if session.total_seats > session.booked_seats %}
+                <a style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;
+                          border-radius: 5px; text-decoration: none; text-transform: uppercase;"
+                   href="{% url 'booking:book_seats' pk=session.id %}">Забронировать билеты</a>
+            {% else %}
+                <span style="border: 1px solid red; padding: 10px 75px; text-align: center; border-radius: 5px; color: red; font-weight: bold;">Нет билетов</span>
+            {% endif %}
+        </div>
+    {% empty %}
+        <div style="border: 1px solid green; padding: 10px 10px; text-align: center;">Нет доступных сеансов.</div>
+    {% endfor %}
+</body>
+
+
+{% endblock %}
