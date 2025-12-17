@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Инфориация!</title>
+        <title>Информация!</title>
         <style>
             label {display: inline-block; width: 150px; font-weight: bold;}
         </style>
@@ -15,6 +15,19 @@
             <p>Уважаемый пользователь {{ user.username }}! </br>
                Поздравляем Вас!</br>
                Вы успешно забронировали билеты!</p>
+
+             {% if tickets %}
+            <h2>Ваши билеты:</h2>
+
+                {% for ticket in tickets %}
+                    <p>{{ ticket }}</p>
+                {% endfor %}
+
+            {% else %}
+                <p>Вы ещё не купили ни одного билета.</p>
+            {% endif %}
+
+
         </div>
     </body>
 

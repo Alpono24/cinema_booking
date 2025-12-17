@@ -5,12 +5,6 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/zero_style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'registration/css/style_registration.css' %}">
-    <link rel="stylesheet" href="{% static 'css/forms_style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
-    <link rel="stylesheet" href="{% static 'css/buttons_style.css' %}">
     <style>
         body {font-family: Arial, sans-serif;}
         h1 {text-align: center; text-transform: uppercase;}
@@ -21,12 +15,13 @@
 </head>
 <body >
 
-    <header style=" border: 1px solid green; border-radius: 10px; max-width: 70%; text-align: center; margin: 0 auto 20px; margin-bottom: 30px; background: green; color: white; display: flex; wrap: wrap;">
-           <div style="padding: 0 20px;"><h1><a  style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;
+    <header style=" border: 1px solid green; border-radius: 10px; max-width: 70%; text-align: center; margin: 0 auto 20px; margin-bottom: 30px; background: green;
+    color: white; display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between;  padding-right: 10px; padding-left: 10px;">
+           <div><h1><a  style="padding: 5px 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer;
                           border-radius: 5px; text-decoration: none; text-transform: uppercase;" href="{% url 'booking:session_list' %}">БИЛЕТЫ В КИНО</a></h1></div>
             <div>
                 {% if user.is_authenticated %}
-                    <div style="display: flex; padding-top: 50px 0 0 0 ;">Вы зарегистрированы как: <b>{{ user.username }}</b></div>
+                    <div style="padding-top: 50px 0 0 0 ; ">Вы зарегистрированы как: <b>{{ user.username }}</b></div>
                     <div style="padding-bottom: 10px;">
                         <form method="post" action="{% url 'registration:logout' %}">
                             {% csrf_token %}

@@ -10,5 +10,5 @@ class ObjectAdmin(admin.ModelAdmin):
 
 @admin.register(Session)
 class ObjectAdmin(admin.ModelAdmin):
-    list_display = ('cinema', 'title', 'date_time', 'total_seats', 'booked_seats')
+    list_display = ('cinema', 'title', 'date_time', 'total_seats')
     search_fields = ('name',)
